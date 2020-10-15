@@ -37,13 +37,14 @@ public class RadioService {
     public int getCurrentVolume() {
         return currentVolume;
     }
+
     //установка текущей громкости
     public void setCurrentVolume(int currentVolume) {
         if (this.currentVolume > maxVolume) {
-            return;
+            this.currentVolume = maxVolume;
         }
         if (this.currentVolume < minVolume) {
-            return;
+            this.currentVolume = minVolume;
         }
         this.currentVolume = currentVolume;
     }

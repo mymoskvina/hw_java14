@@ -194,6 +194,22 @@ class RadioServiceTest {
         assertEquals(expected, radio.getCurrentStation());
     }
     @Test
+    void CheckGetAndSetCurrentUndefinedUnderMinStation() {
+        RadioService radio = new RadioService();
+        radio.setCurrentStation(-1);
+        int expected = 0;
+        radio.setCurrentStation(expected);
+        assertEquals(expected, radio.getCurrentStation());
+    }
+    @Test
+    void CheckGetAndSetCurrentUndefinedBelowMixStation() {
+        RadioService radio = new RadioService();
+        radio.setCurrentStation(-1);
+        int expected = 0;
+        radio.setCurrentStation(expected);
+        assertEquals(expected, radio.getCurrentStation());
+    }
+    @Test
     void CheckGetAndSetPreviousStation() {
         RadioService radio = new RadioService();
         radio.setPreviousStation(8);
@@ -234,6 +250,22 @@ class RadioServiceTest {
         assertEquals(expected, radio.getCurrentVolume());
     }
     @Test
+    void CheckGetAndSetUndefinedBelowCurrentVolume() {
+        RadioService radio = new RadioService();
+        radio.setCurrentVolume(15);
+        int expected = 10;
+        radio.setCurrentVolume(expected);
+        assertEquals(expected, radio.getCurrentVolume());
+    }
+    @Test
+    void CheckGetAndSetUndefinedUnderCurrentVolume() {
+        RadioService radio = new RadioService();
+        radio.setCurrentVolume(-1);
+        int expected = 0;
+        radio.setCurrentVolume(expected);
+        assertEquals(expected, radio.getCurrentVolume());
+    }
+    @Test
     void CheckGetAndSetMaxVolume() {
         RadioService radio = new RadioService();
         radio.setMaxVolume(10);
@@ -242,9 +274,34 @@ class RadioServiceTest {
         assertEquals(expected, radio.getMaxVolume());
     }
     @Test
+    void CheckGetAndSetUndefinedMaxVolume() {
+        RadioService radio = new RadioService();
+        radio.setMaxVolume(5);
+        int expected = 10;
+        radio.setMaxVolume(expected);
+        assertEquals(expected, radio.getMaxVolume());
+    }
+
+    @Test
     void CheckGetAndSetMinVolume() {
         RadioService radio = new RadioService();
         radio.setMinVolume(0);
+        int expected = 0;
+        radio.setMinVolume(expected);
+        assertEquals(expected, radio.getMinVolume());
+    }
+    @Test
+    void CheckGetAndSetUndefinedMinVolume() {
+        RadioService radio = new RadioService();
+        radio.setMinVolume(5);
+        int expected = 0;
+        radio.setMinVolume(expected);
+        assertEquals(expected, radio.getMinVolume());
+    }
+    @Test
+    void CheckGetAndSetUndefinedUnderMinVolume() {
+        RadioService radio = new RadioService();
+        radio.setMinVolume(-1);
         int expected = 0;
         radio.setMinVolume(expected);
         assertEquals(expected, radio.getMinVolume());
@@ -261,6 +318,22 @@ class RadioServiceTest {
         RadioService radio = new RadioService();
         radio.setCurrentStation(8);
         int expected = 8;
+        radio.setCurrentStation(expected);
+        assertEquals(expected, radio.getCurrentStation());
+    }
+    @Test
+    void CheckGetAndSetCurrentUndefinedBelowMaxStation() {
+        RadioService radio = new RadioService();
+        radio.setCurrentStation(15);
+        int expected = 10;
+        radio.setCurrentStation(expected);
+        assertEquals(expected, radio.getCurrentStation());
+    }
+    @Test
+    void CheckGetAndSetCurrentUndefinedBelowMinStation() {
+        RadioService radio = new RadioService();
+        radio.setCurrentStation(-1);
+        int expected = 0;
         radio.setCurrentStation(expected);
         assertEquals(expected, radio.getCurrentStation());
     }
