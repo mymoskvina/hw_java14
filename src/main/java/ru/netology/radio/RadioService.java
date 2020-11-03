@@ -1,16 +1,32 @@
 package ru.netology.radio;
 
 public class RadioService {
-    private String name;
-    private int currentStation;
-    private int currentVolume;
-    private int maxVolume;
-    private int minVolume;
-    private int firstStation;
-    private int lastStation;
-    private int nextStation;
-    private int previousStation;
-    private boolean on;
+    private String name = "Super Radio";
+    private int currentStation = 8;
+    private int currentVolume = 5;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int firstStation = 0;
+    private int lastStation = 9;
+    private int nextStation = 9;
+    private int previousStation = 7;
+    private boolean on = true;
+
+    public RadioService(String name, int currentStation, int currentVolume, int maxVolume, int minVolume, int firstStation, int lastStation, int nextStation, int previousStation, boolean on) {
+        this.name = name;
+        this.currentStation = currentStation;
+        this.currentVolume = currentVolume;
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+        this.firstStation = firstStation;
+        this.lastStation = lastStation;
+        this.nextStation = nextStation;
+        this.previousStation = previousStation;
+        this.on = on;
+    }
+
+    public RadioService() {
+    }
 
     public String getName() {
         return name;
