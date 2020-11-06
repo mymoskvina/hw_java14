@@ -110,21 +110,21 @@ class RadioServiceTest {
     void setCurrentStationBelowZero() {
         RadioService radio = new RadioService();
         radio.setCurrentStation(-1);
-        assertEquals(0, radio.getFirstStation());
+        assertEquals(9, radio.getCurrentStation());
     }
     // набираем максимальную станцию на пульте, выше диапазона
     @Test
     void setCurrentStationAbove9() {
         RadioService radio = new RadioService();
         radio.setCurrentStation(10);
-        assertEquals(9, radio.getLastStation());
+        assertEquals(0, radio.getCurrentStation());
     }
     // набираем максимальную станцию на пульте, в диапазоне
     @Test
     void setCurrentStationInTest() {
         RadioService radio = new RadioService();
         radio.setCurrentStation(9);
-        assertEquals(9, radio.getLastStation());
+        assertEquals(9, radio.getCurrentStation());
     }
     //уменьшаем громкость на 1
     @Test
@@ -254,7 +254,7 @@ class RadioServiceTest {
     void CheckGetAndSetAboveCurrentVolume() {
         RadioService radio = new RadioService();
         radio.setCurrentVolume(101);
-        assertEquals(100, radio.getMaxVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
     @Test
     void GetAndSetCurrentVolumeMin() {
@@ -271,7 +271,7 @@ class RadioServiceTest {
     void CheckGetAndSetBelowMinVolume() {
         RadioService radio = new RadioService();
         radio.setCurrentVolume(-1);
-        assertEquals(0, radio.getMinVolume());
+        assertEquals(0, radio.getCurrentVolume());
     }
     @Test
     void CheckGetAndSetMaxVolume() {

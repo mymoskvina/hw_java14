@@ -41,11 +41,13 @@ public class RadioService {
     }
 
     public void setCurrentStation(int currentStation) {
-        if (this.currentStation > lastStation) {
-            this.currentStation = lastStation;
-        }
-        if (this.currentStation < firstStation) {
+        if (currentStation > lastStation) {
             this.currentStation = firstStation;
+            return;
+        }
+        if (currentStation < firstStation) {
+            this.currentStation = lastStation;
+            return;
         }
         this.currentStation = currentStation;
     }
@@ -56,11 +58,13 @@ public class RadioService {
 
     //установка текущей громкости
     public void setCurrentVolume(int currentVolume) {
-        if (this.currentVolume > maxVolume) {
+        if (currentVolume > maxVolume) {
             this.currentVolume = maxVolume;
+            return;
         }
-        if (this.currentVolume < minVolume) {
+        if (currentVolume < minVolume) {
             this.currentVolume = minVolume;
+            return;
         }
         this.currentVolume = currentVolume;
     }
