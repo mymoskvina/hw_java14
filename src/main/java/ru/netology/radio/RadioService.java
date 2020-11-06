@@ -1,16 +1,32 @@
 package ru.netology.radio;
 
 public class RadioService {
-    private String name;
-    private int currentStation;
-    private int currentVolume;
-    private int maxVolume;
-    private int minVolume;
-    private int firstStation;
-    private int lastStation;
-    private int nextStation;
-    private int previousStation;
-    private boolean on;
+    private String name = "Super Radio";
+    private int currentStation = 8;
+    private int currentVolume = 5;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int firstStation = 0;
+    private int lastStation = 9;
+    private int nextStation = 9;
+    private int previousStation = 7;
+    private boolean on = true;
+
+    public RadioService(String name, int currentStation, int currentVolume, int maxVolume, int minVolume, int firstStation, int lastStation, int nextStation, int previousStation, boolean on) {
+        this.name = name;
+        this.currentStation = currentStation;
+        this.currentVolume = currentVolume;
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+        this.firstStation = firstStation;
+        this.lastStation = lastStation;
+        this.nextStation = nextStation;
+        this.previousStation = previousStation;
+        this.on = on;
+    }
+
+    public RadioService() {
+    }
 
     public String getName() {
         return name;
@@ -25,11 +41,13 @@ public class RadioService {
     }
 
     public void setCurrentStation(int currentStation) {
-        if (this.currentStation > lastStation) {
+        if (currentStation > lastStation) {
             this.currentStation = firstStation;
+            return;
         }
-        if (this.currentStation < firstStation) {
+        if (currentStation < firstStation) {
             this.currentStation = lastStation;
+            return;
         }
         this.currentStation = currentStation;
     }
@@ -40,18 +58,17 @@ public class RadioService {
 
     //установка текущей громкости
     public void setCurrentVolume(int currentVolume) {
-        if (this.currentVolume > maxVolume) {
+        if (currentVolume > maxVolume) {
             this.currentVolume = maxVolume;
+            return;
         }
-        if (this.currentVolume < minVolume) {
+        if (currentVolume < minVolume) {
             this.currentVolume = minVolume;
+            return;
         }
         this.currentVolume = currentVolume;
     }
 
-    public int getMaxVolume() {
-        return maxVolume;
-    }
 
     public void increaseCurrentVolume() {
         if (currentVolume < maxVolume) {
@@ -63,6 +80,9 @@ public class RadioService {
         if (currentVolume > minVolume) {
             this.currentVolume--;
         }
+    }
+    public int getMaxVolume() {
+        return maxVolume;
     }
 
     public void setMaxVolume(int maxVolume) {
