@@ -19,70 +19,59 @@ class RadioServiceTest {
         assertEquals("Super New Radio", radio.getName());
     }
     //преключаем на предыдущю
-    @Test
-    void GoToPreviousStation() {
-        RadioService radio = new RadioService();
-        assertEquals(7, radio.getPreviousStation());
-    }
-    @Test
-    void GoToPreviousStationInTest() {
-        RadioService radio = new RadioService();
-        radio.setPreviousStation(7);
-        assertEquals(7, radio.getPreviousStation());
-    }
-    // переключаем на предыдущую, если на 0 значении
+   // переключаем на предыдущую, если на 0 значении
     @Test
     public void GoToPreviousStationIfZero() {
-        RadioService radio = new RadioService("Super Radio", 0,5,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,5,100, 0, 0,9, true );
         radio.goToPreviousStation();
         assertEquals(9, radio.getCurrentStation());
     }
     // переключаем на предыдущую, если на максимальном значении
     @Test
     public void GoToPreviousStationIfMax() {
-        RadioService radio = new RadioService("Super Radio", 9,5,100, 0, 0,9, 0, 8, true );
+        RadioService radio = new RadioService("Super Radio", 9,5,100, 0, 0,9, true );
         radio.goToPreviousStation();
         assertEquals(8, radio.getCurrentStation());
     }
     // переключаем на предыдущую, если на отрицательном значении
     @Test
     public void GoToPreviousStationIfMinusValue() {
-        RadioService radio = new RadioService("Super Radio", -3,5,100, 0, 0,9, 0, 8, true );
+        RadioService radio = new RadioService("Super Radio", -3,5,100, 0, 0,9, true );
         radio.goToPreviousStation();
         assertEquals(9, radio.getCurrentStation());
     }
     // переключаем на следующую
     @Test
     public void GoToNextStation() {
-        RadioService radio = new RadioService("Super Radio", 5,5,10, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 5,5,10, 0, 0,9, true );
         radio.goToNextStation();
         assertEquals(6, radio.getCurrentStation());
     }
     // переключаем на следующую, если на 0 значении
     @Test
     public void GoToNextStationIfSelectedZeroStation() {
-        RadioService radio = new RadioService("Super Radio", 0,5,10, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,5,10, 0, 0,9,true );
         radio.goToNextStation();
         assertEquals(1, radio.getCurrentStation());
     }
     // переключаем на следующую, если на максимальном значении
     @Test
     public void GoToNextStationIfMax() {
-        RadioService radio = new RadioService("Super Radio", 9,5,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 9,5,100, 0, 0,9,true );
         radio.goToNextStation();
         assertEquals(0, radio.getCurrentStation());
     }
     // переключаем на следующую, если в отрицательном значении
     @Test
     public void GoToNextStationIfMinusValue() {
-        RadioService radio = new RadioService("Super Radio", -1,5,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", -1,5,100, 0, 0,9,true );
         radio.goToNextStation();
         assertEquals(0, radio.getCurrentStation());
     }
     // переключаем на следующую, если в больше максимального значения
     @Test
     public void GoToNextStationIfAboveMaxValue() {
-        RadioService radio = new RadioService("Super Radio", 12,5,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 12,5,100, 0, 0,9,true );
         radio.goToNextStation();
         assertEquals(0, radio.getCurrentStation());
     }
@@ -90,19 +79,19 @@ class RadioServiceTest {
     // набираем станцию на пульте
     @Test
     void setCurrentStation() {
-        RadioService radio = new RadioService("Super Radio", 3,5,10, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 3,5,10, 0, 0,9, true );
         assertEquals(3, radio.getCurrentStation());
     }
     //набираем 0 станцию на пульте
     @Test
     void setCurrentStationZero() {
-        RadioService radio = new RadioService("Super Radio", 0,5,10, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,5,10, 0, 0,9,true );
         assertEquals(0, radio.getCurrentStation());
     }
     // набираем максимальную станцию на пульте
     @Test
     void setCurrentStationMax() {
-        RadioService radio = new RadioService("Super Radio", 9,5,10, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 9,5,10, 0, 0,9,true );
         assertEquals(9, radio.getCurrentStation());
     }
     // набираем на пульте станцию -1
@@ -129,72 +118,47 @@ class RadioServiceTest {
     //уменьшаем громкость на 1
     @Test
     public void DecreaseVolume() {
-        RadioService radio = new RadioService("Super Radio", 0,5,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,5,100, 0, 0,9,true );
         radio.decreaseCurrentVolume();
         assertEquals(4, radio.getCurrentVolume());
     }
     //уменьшаем громкость на 1 если стоит 0
     @Test
     public void DecreaseVolumeIfZero() {
-        RadioService radio = new RadioService("Super Radio", 0,0,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,0,100, 0, 0,9,true );
         radio.decreaseCurrentVolume();
         assertEquals(0, radio.getCurrentVolume());
     }
     //уменьшаем громкость на 1 если стоит 10
     @Test
     public void DecreaseVolumeIfMax() {
-        RadioService radio = new RadioService("Super Radio", 0,100,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,100,100, 0, 0,9,true );
         radio.decreaseCurrentVolume();
         assertEquals(99, radio.getCurrentVolume());
     }
     //увеличиваем громкость на 1
     @Test
     public void IncreaseVolume() {
-        RadioService radio = new RadioService("Super Radio", 0,5,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,5,100, 0, 0,9,true );
         radio.increaseCurrentVolume();
         assertEquals(6, radio.getCurrentVolume());
     }
     //увеличиваем громкость на 1 если 0
     @Test
     public void IncreaseVolumeIfZero() {
-        RadioService radio = new RadioService("Super Radio", 0,0,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,0,100, 0, 0,9, true );
         radio.increaseCurrentVolume();
         assertEquals(1, radio.getCurrentVolume());
     }
     //увеличиваем громкость на 1 если максимальная громкость
     @Test
     public void IncreaseVolumeIfMax() {
-        RadioService radio = new RadioService("Super Radio", 0,100,100, 0, 0,9, 6, 4, true );
+        RadioService radio = new RadioService("Super Radio", 0,100,100, 0, 0,9,true );
         radio.increaseCurrentVolume();
         assertEquals(100, radio.getCurrentVolume());
     }
     //-----------------------
-    @Test
-    void CheckGetAndSetNextStation() {
-        RadioService radio = new RadioService();
-        assertEquals(9, radio.getNextStation());
-    }
-    @Test
-    void CheckGetAndSetNextStationInTest() {
-        RadioService radio = new RadioService();
-        radio.setNextStation(7);
-        assertEquals(7, radio.getNextStation());
-    }
-    // как отрабатывает следующая станция, когда текущая задана 15
-    @Test
-    void CheckGetAndSetNextStationIfCurrentOutOfBounce() {
-        RadioService radio = new RadioService("Super Radio", 6,5,10, 0, 0,9, 7, 5, true );
-        radio.setCurrentStation(15);
-        assertEquals(7, radio.getNextStation());
-    }
-    // как отрабатывает следующая станция, когда текущая задана -2
-    @Test
-    void CheckGetAndSetNextStationIfCurrentMinusValue() {
-        RadioService radio = new RadioService("Super Radio", 6,5,10, 0, 0,9, 7, 5, true );
-        radio.setCurrentStation(-2);
-        assertEquals(7, radio.getNextStation());
-    }
-    @Test
+   @Test
     void CheckGetAndSetLastStation() {
         RadioService radio = new RadioService();
         assertEquals(9, radio.getLastStation());

@@ -7,7 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 
-
 public class RadioService {
     private String name = "Super Radio";
     private int currentStation = 8;
@@ -16,8 +15,6 @@ public class RadioService {
     private int minVolume = 0;
     private int firstStation = 0;
     private int lastStation = 9;
-    private int nextStation = 9;
-    private int previousStation = 7;
     private boolean on = true;
 
     public int getCurrentStation() {
@@ -64,14 +61,6 @@ public class RadioService {
         if (currentVolume > minVolume) {
             this.currentVolume--;
         }
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(int minVolume) {
-        this.minVolume = minVolume;
     }
 
     public void goToNextStation() {
