@@ -1,4 +1,12 @@
 package ru.netology.radio;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
 
 public class RadioService {
     private String name = "Super Radio";
@@ -11,30 +19,6 @@ public class RadioService {
     private int nextStation = 9;
     private int previousStation = 7;
     private boolean on = true;
-
-    public RadioService(String name, int currentStation, int currentVolume, int maxVolume, int minVolume, int firstStation, int lastStation, int nextStation, int previousStation, boolean on) {
-        this.name = name;
-        this.currentStation = currentStation;
-        this.currentVolume = currentVolume;
-        this.maxVolume = maxVolume;
-        this.minVolume = minVolume;
-        this.firstStation = firstStation;
-        this.lastStation = lastStation;
-        this.nextStation = nextStation;
-        this.previousStation = previousStation;
-        this.on = on;
-    }
-
-    public RadioService() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -81,13 +65,6 @@ public class RadioService {
             this.currentVolume--;
         }
     }
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
 
     public int getMinVolume() {
         return minVolume;
@@ -95,14 +72,6 @@ public class RadioService {
 
     public void setMinVolume(int minVolume) {
         this.minVolume = minVolume;
-    }
-
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
     }
 
     public void goToNextStation() {
@@ -121,37 +90,5 @@ public class RadioService {
         else {
             this.currentStation = lastStation;
         }
-    }
-
-    public int getFirstStation() {
-        return firstStation;
-    }
-
-    public void setFirstStation(int firstStation) {
-        this.firstStation = firstStation;
-    }
-
-    public int getLastStation() {
-        return lastStation;
-    }
-
-    public void setLastStation(int lastStation) {
-        this.lastStation = lastStation;
-    }
-
-    public int getNextStation() {
-        return nextStation;
-    }
-
-    public void setNextStation(int nextStation) {
-        this.nextStation = nextStation;
-    }
-
-    public int getPreviousStation() {
-        return previousStation;
-    }
-
-    public void setPreviousStation(int previousStation) {
-        this.previousStation = previousStation;
     }
 }
